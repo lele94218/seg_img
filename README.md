@@ -1,7 +1,7 @@
 JS Segment Annotator
 ====================
 
-a
+aaaaaaa
 
 Javascript image annotation tool based on image segmentation.
 
