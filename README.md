@@ -1,6 +1,8 @@
 JS Segment Annotator
 ====================
 
+a
+
 Javascript image annotation tool based on image segmentation.
 
  * Label image regions with mouse.
