@@ -207,6 +207,8 @@ function(Layer, Annotator, util) {
         manualParagraph = document.createElement("p"),
         spacer7 = document.createElement("div"),
         exportButton = document.createElement("input"),
+        spacer8 = document.createElement("div"),
+        annoteButton = document.createElement("input"),
         manualText;
     exportButton.type = "submit";
     exportButton.value = "save";
@@ -218,6 +220,19 @@ function(Layer, Annotator, util) {
       var filename = "seg_" + data.imageURLs[params.id].split(/[\\/]/).pop().substring(0,data.imageURLs[params.id].split(/[\\/]/).pop().length - 4) + ".png";
       downloadURI(annotator.export(), filename);
     });
+
+    annoteButton.type = "file";
+    annoteButton.className = "edit-sidebar-submit";
+    annoteButton.addEventListener("change", function() {
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.addEventListener("load", function(e) {
+            var url = e.target.result;
+            annotator.import(url);
+        });
+        reader.readAsDataURL(file);
+    })
+
     spacer1.className = "edit-sidebar-spacer";
     undoButton.className = "edit-sidebar-button";
     undoButton.appendChild(document.createTextNode("undo"));
@@ -293,6 +308,7 @@ function(Layer, Annotator, util) {
     container.appendChild(manualParagraph);
     //container.appendChild(spacer4);
     container.appendChild(exportButton);
+    container.appendChild(annoteButton);
     return container;
   }
 
@@ -448,6 +464,7 @@ function(Layer, Annotator, util) {
     anchor.click();
     document.body.removeChild(anchor);
   }
+
 
   // Entry point.
   function render(data, params) {
