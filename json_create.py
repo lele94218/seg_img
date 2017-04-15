@@ -33,12 +33,13 @@ data["annotationURLs"] = []
 
 
 for filename in os.listdir(img_folder):
-    path = ant_folder + "seg_" + filename.split('.')[0] + ".png"
-    print(path)
-    if os.path.isfile(path):
-        data["annotationURLs"].append(path)
-    else:
-        data["annotationURLs"].append(ant_folder + "default.png")
+    if filename.endswith(".jpg"): 
+        path = ant_folder + "seg_" + filename.split('.')[0] + ".png"
+        print(path)
+        if os.path.isfile(path):
+            data["annotationURLs"].append(path)
+        else:
+            data["annotationURLs"].append(ant_folder + "default.png")
 
 
 json.dump(data, file, indent=4)
