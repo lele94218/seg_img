@@ -10,7 +10,18 @@ Javascript image annotation tool based on image segmentation.
 
 A browser must support HTML canvas to use this tool.
 
-There is an [online demo](http://www.terryx.com/seg_img/index.html).
+There is an [online work site](http://www.terryx.com/seg_img/index.html).
+
+
+Updating label images
+--------------
+
+We need update JSON file after image segmentation
+
+    python ./json_create.py
+
+Then, the segmentation images automatically updated to our online website.
+
 
 Importing data
 --------------
